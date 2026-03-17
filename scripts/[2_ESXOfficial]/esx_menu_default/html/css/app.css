@@ -1,0 +1,33 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+#menu-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    background: rgba(0, 0, 0, 0.85);
+    border-radius: 8px;
+    font-family: 'Segoe UI', sans-serif;
+    color: #fff;
+    overflow: hidden;
+}
+
+#menu-title {
+    padding: 15px 20px;
+    font-size: 18px;
+    font-weight: bold;
+    background: rgba(33, 150, 243, 0.9);
+    text-align: center;
+}
+
+.menu-item {
+    padding: 12px 20px;
+    cursor: pointer;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    transition: background 0.2s;
+}
+
+.menu-item:hover, .menu-item.active {
+    background: rgba(33, 150, 243, 0.4);
+}

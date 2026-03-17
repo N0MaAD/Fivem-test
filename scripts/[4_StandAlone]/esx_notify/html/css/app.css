@@ -1,0 +1,39 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+#notification-container {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 320px;
+    z-index: 9999;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.notification {
+    padding: 14px 18px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    color: #fff;
+    font-size: 14px;
+    animation: slideIn 0.3s ease-out;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+.notification.info    { background: rgba(33, 150, 243, 0.9); }
+.notification.success { background: rgba(76, 175, 80, 0.9); }
+.notification.error   { background: rgba(244, 67, 54, 0.9); }
+.notification.warning { background: rgba(255, 152, 0, 0.9); }
+
+.notification.fadeOut {
+    animation: slideOut 0.3s ease-in forwards;
+}
+
+@keyframes slideIn {
+    from { transform: translateX(100%); opacity: 0; }
+    to   { transform: translateX(0);    opacity: 1; }
+}
+
+@keyframes slideOut {
+    from { transform: translateX(0);    opacity: 1; }
+    to   { transform: translateX(100%); opacity: 0; }
+}

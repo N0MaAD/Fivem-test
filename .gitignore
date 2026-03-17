@@ -1,0 +1,20 @@
+# Cache FiveM
+cache/
+
+# Artifacts serveur
+alpine/
+run.sh
+FXServer
+server-data/
+
+# Fichiers systeme
+.DS_Store
+Thumbs.db
+*.log
+
+# Node
+node_modules/
+
+# Environnement
+.env
+*.key
