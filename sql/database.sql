@@ -95,6 +95,28 @@ CREATE TABLE IF NOT EXISTS `phone_twitter` (
     PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+-- ---- Table Fishing Data (niveaux) ----
+CREATE TABLE IF NOT EXISTS `fishing_data` (
+    `id` INT(11) NOT NULL AUTO_INCREMENT,
+    `identifier` VARCHAR(60) NOT NULL,
+    `xp` INT(11) DEFAULT 0,
+    `level` INT(11) DEFAULT 1,
+    `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (`id`),
+    UNIQUE KEY `identifier` (`identifier`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- ---- Table Fishing Inventory ----
+CREATE TABLE IF NOT EXISTS `fishing_inventory` (
+    `id` INT(11) NOT NULL AUTO_INCREMENT,
+    `identifier` VARCHAR(60) NOT NULL,
+    `fish_name` VARCHAR(50) NOT NULL,
+    `amount` INT(11) DEFAULT 0,
+    `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (`id`),
+    UNIQUE KEY `identifier_fish` (`identifier`, `fish_name`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
 -- ---- Items par défaut ----
 INSERT IGNORE INTO `items` (`name`, `label`, `limit`, `rare`, `can_remove`) VALUES
     ('bread',       'Pain',          50, 0, 1),

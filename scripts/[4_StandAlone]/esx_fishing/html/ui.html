@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/app.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- MINIJEU DE PÊCHE -->
+    <div id="minigame" style="display:none;">
+        <div class="minigame-container">
+            <div class="minigame-title"><i class="fas fa-fish"></i> Attrapez le poisson !</div>
+            <div class="minigame-bar">
+                <div class="minigame-zone" id="minigame-zone"></div>
+                <div class="minigame-cursor" id="minigame-cursor"></div>
+            </div>
+            <div class="minigame-hint">Appuyez sur <span class="key">ESPACE</span> quand le curseur est dans la zone verte</div>
+        </div>
+    </div>
+
+    <!-- MENU VENTE -->
+    <div id="sell-menu" style="display:none;">
+        <div class="sell-container">
+            <div class="sell-header">
+                <h2><i class="fas fa-store"></i> Poissonnier</h2>
+                <button class="close-btn" id="close-sell"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="sell-stats">
+                <div class="stat">
+                    <i class="fas fa-star"></i>
+                    <span>Niveau <strong id="player-level">1</strong></span>
+                </div>
+                <div class="stat">
+                    <i class="fas fa-bolt"></i>
+                    <span><strong id="player-xp">0</strong> XP</span>
+                </div>
+            </div>
+            <div id="sell-list" class="sell-list"></div>
+            <div class="sell-footer">
+                <button class="sell-all-btn" id="sell-all-btn">
+                    <i class="fas fa-cash-register"></i> Tout vendre
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
