@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/app.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div id="phone" style="display:none;">
+        <!-- Barre du haut -->
+        <div class="phone-header">
+            <span id="clock">12:00</span>
+            <span id="my-number">06XXXXXXXX</span>
+            <div class="header-icons">
+                <i class="fas fa-signal"></i>
+                <i class="fas fa-wifi"></i>
+                <i class="fas fa-battery-full"></i>
+            </div>
+        </div>
+
+        <!-- Écran principal -->
+        <div id="screen">
+            <!-- HOME -->
+            <div class="page active" id="page-home">
+                <div class="app-grid">
+                    <div class="app-icon" data-page="contacts">
+                        <div class="icon-bg" style="background:#4CAF50;"><i class="fas fa-address-book"></i></div>
+                        <span>Contacts</span>
+                    </div>
+                    <div class="app-icon" data-page="messages">
+                        <div class="icon-bg" style="background:#2196F3;"><i class="fas fa-comment-dots"></i></div>
+                        <span>Messages</span>
+                    </div>
+                    <div class="app-icon" data-page="calls">
+                        <div class="icon-bg" style="background:#4CAF50;"><i class="fas fa-phone"></i></div>
+                        <span>Appels</span>
+                    </div>
+                    <div class="app-icon" data-page="bank">
+                        <div class="icon-bg" style="background:#FF9800;"><i class="fas fa-university"></i></div>
+                        <span>Banque</span>
+                    </div>
+                    <div class="app-icon" data-page="twitter">
+                        <div class="icon-bg" style="background:#1DA1F2;"><i class="fab fa-twitter"></i></div>
+                        <span>Twitter</span>
+                    </div>
+                    <div class="app-icon" data-page="settings">
+                        <div class="icon-bg" style="background:#607D8B;"><i class="fas fa-cog"></i></div>
+                        <span>Réglages</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CONTACTS -->
+            <div class="page" id="page-contacts">
+                <div class="page-header">
+                    <button class="back-btn" data-page="home"><i class="fas fa-arrow-left"></i></button>
+                    <h2>Contacts</h2>
+                    <button class="action-btn" id="add-contact-btn"><i class="fas fa-plus"></i></button>
+                </div>
+                <div id="contacts-list" class="list-container"></div>
+
+                <!-- Modal ajout contact -->
+                <div id="add-contact-modal" class="modal" style="display:none;">
+                    <div class="modal-content">
+                        <h3>Nouveau contact</h3>
+                        <input type="text" id="new-contact-name" placeholder="Nom" maxlength="50" />
+                        <input type="text" id="new-contact-number" placeholder="Numéro" maxlength="20" />
+                        <div class="modal-actions">
+                            <button class="btn btn-cancel" id="cancel-add-contact">Annuler</button>
+                            <button class="btn btn-confirm" id="confirm-add-contact">Ajouter</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MESSAGES -->
+            <div class="page" id="page-messages">
+                <div class="page-header">
+                    <button class="back-btn" data-page="home"><i class="fas fa-arrow-left"></i></button>
+                    <h2>Messages</h2>
+                    <button class="action-btn" id="new-message-btn"><i class="fas fa-pen"></i></button>
+                </div>
+                <div id="messages-list" class="list-container"></div>
+
+                <!-- Modal nouveau message -->
+                <div id="new-message-modal" class="modal" style="display:none;">
+                    <div class="modal-content">
+                        <h3>Nouveau message</h3>
+                        <input type="text" id="msg-target" placeholder="Numéro du destinataire" maxlength="20" />
+                        <textarea id="msg-content" placeholder="Votre message..." maxlength="500" rows="3"></textarea>
+                        <div class="modal-actions">
+                            <button class="btn btn-cancel" id="cancel-new-msg">Annuler</button>
+                            <button class="btn btn-confirm" id="confirm-new-msg">Envoyer</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- APPELS -->
+            <div class="page" id="page-calls">
+                <div class="page-header">
+                    <button class="back-btn" data-page="home"><i class="fas fa-arrow-left"></i></button>
+                    <h2>Appels</h2>
+                </div>
+                <div class="dialer">
+                    <input type="text" id="dial-number" placeholder="Numéro..." maxlength="20" />
+                    <div class="dial-pad">
+                        <button class="dial-key" data-key="1">1</button>
+                        <button class="dial-key" data-key="2">2</button>
+                        <button class="dial-key" data-key="3">3</button>
+                        <button class="dial-key" data-key="4">4</button>
+                        <button class="dial-key" data-key="5">5</button>
+                        <button class="dial-key" data-key="6">6</button>
+                        <button class="dial-key" data-key="7">7</button>
+                        <button class="dial-key" data-key="8">8</button>
+                        <button class="dial-key" data-key="9">9</button>
+                        <button class="dial-key" data-key="*">*</button>
+                        <button class="dial-key" data-key="0">0</button>
+                        <button class="dial-key" data-key="#">#</button>
+                    </div>
+                    <button class="call-btn" id="make-call-btn"><i class="fas fa-phone"></i></button>
+                </div>
+                <h3 class="section-title">Historique</h3>
+                <div id="call-history" class="list-container"></div>
+            </div>
+
+            <!-- BANQUE -->
+            <div class="page" id="page-bank">
+                <div class="page-header">
+                    <button class="back-btn" data-page="home"><i class="fas fa-arrow-left"></i></button>
+                    <h2>Maze Bank</h2>
+                </div>
+                <div class="bank-container">
+                    <div class="bank-card">
+                        <div class="bank-card-header">
+                            <i class="fas fa-university"></i>
+                            <span>Maze Bank</span>
+                        </div>
+                        <div class="bank-balance">
+                            <span class="balance-label">Compte courant</span>
+                            <span class="balance-amount" id="bank-amount">$0</span>
+                        </div>
+                    </div>
+                    <div class="bank-info">
+                        <div class="bank-row">
+                            <span><i class="fas fa-wallet"></i> Espèces</span>
+                            <span id="cash-amount">$0</span>
+                        </div>
+                        <div class="bank-row">
+                            <span><i class="fas fa-money-bill-wave"></i> Argent sale</span>
+                            <span id="dirty-amount">$0</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TWITTER -->
+            <div class="page" id="page-twitter">
+                <div class="page-header">
+                    <button class="back-btn" data-page="home"><i class="fas fa-arrow-left"></i></button>
+                    <h2>Twitter</h2>
+                </div>
+                <div class="tweet-compose">
+                    <textarea id="tweet-input" placeholder="Quoi de neuf ?" maxlength="280" rows="2"></textarea>
+                    <button class="btn btn-confirm" id="post-tweet-btn">Tweeter</button>
+                </div>
+                <div id="twitter-feed" class="list-container"></div>
+            </div>
+
+            <!-- SETTINGS -->
+            <div class="page" id="page-settings">
+                <div class="page-header">
+                    <button class="back-btn" data-page="home"><i class="fas fa-arrow-left"></i></button>
+                    <h2>Réglages</h2>
+                </div>
+                <div class="settings-container">
+                    <div class="setting-row">
+                        <span>Mon numéro</span>
+                        <span id="settings-number" class="setting-value">N/A</span>
+                    </div>
+                    <div class="setting-row">
+                        <span>Version</span>
+                        <span class="setting-value">1.0.0</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- INCOMING CALL OVERLAY -->
+            <div id="call-overlay" style="display:none;">
+                <div class="call-screen">
+                    <div class="call-info">
+                        <i class="fas fa-user-circle call-avatar"></i>
+                        <span id="call-name">Inconnu</span>
+                        <span id="call-number-display">06XXXXXXXX</span>
+                        <span id="call-status">Appel entrant...</span>
+                    </div>
+                    <div class="call-actions">
+                        <button class="call-action-btn answer-btn" id="answer-call-btn">
+                            <i class="fas fa-phone"></i>
+                        </button>
+                        <button class="call-action-btn decline-btn" id="decline-call-btn">
+                            <i class="fas fa-phone-slash"></i>
+                        </button>
+                    </div>
+                    <button class="call-action-btn hangup-btn" id="hangup-btn" style="display:none;">
+                        <i class="fas fa-phone-slash"></i> Raccrocher
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Barre de navigation basse -->
+        <div class="phone-navbar">
+            <button class="nav-btn" data-page="calls"><i class="fas fa-phone"></i></button>
+            <button class="nav-btn home-btn" data-page="home"><i class="fas fa-circle"></i></button>
+            <button class="nav-btn" data-page="messages"><i class="fas fa-comment"></i></button>
+        </div>
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
